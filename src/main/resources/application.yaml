@@ -1,0 +1,16 @@
+server:
+  port: 8085
+
+spring:
+  pulsar:
+    defaults:
+      type-mappings:
+        - message-type: com.baeldung.springpulsar.User
+          schema-info:
+            schema-type: JSON
+
+logging:
+  level:
+    org:
+      apache:
+        pulsar: DEBUG
