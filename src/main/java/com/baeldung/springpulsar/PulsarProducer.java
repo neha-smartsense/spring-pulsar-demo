@@ -1,7 +1,6 @@
 package com.baeldung.springpulsar;
 
 import org.apache.pulsar.client.api.PulsarClientException;
-import org.apache.pulsar.client.api.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.pulsar.core.PulsarTemplate;
 import org.springframework.stereotype.Component;
@@ -18,11 +17,7 @@ public class PulsarProducer {
     private static final String USER_TOPIC_STR = "user-topic-str";
 
     public void sendMessageToPulsarTopic(User user) throws PulsarClientException {
-        /*template.newMessage(user)
-                .withTopic(USER_TOPIC)
-                .withSchema(Schema.JSON(User.class))
-                .send();*/
-        template.send(USER_TOPIC, user, Schema.JSON(User.class));
+        template.send(USER_TOPIC, user);
     }
 
     public void sendStringMessageToPulsarTopic(String str) throws PulsarClientException {
